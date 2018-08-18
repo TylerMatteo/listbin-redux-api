@@ -6,6 +6,7 @@ const Switch = ReactRouter.Switch;
 const Home = require('./Home');
 
 class App extends React.Component {
+
     render() {
         return (
             <Router>
