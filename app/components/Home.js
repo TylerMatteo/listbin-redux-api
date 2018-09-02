@@ -1,20 +1,6 @@
 const React = require('react');
 const Listlist = require('./Listlist');
-
-function AddListForm(props) {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <input type="text" placeholder="List Name" />
-            <textarea name="Description" cols="30" rows="10" placeholder="List Description"></textarea>
-            <button 
-                className="button"
-                type='submit'>
-                Submit
-            </button>
-            <button onClick={ props.onCancel }>Cancel</button>
-        </form>
-    )
-}
+const AddListForm = require('./AddListForm');
 
 class Home extends React.Component {
     constructor() {
@@ -64,15 +50,19 @@ class Home extends React.Component {
 
         this.setState((prevState) => {
             return {
-                lists: prevState.lists.concat(lists)
+                lists: [...prevState.lists, ...lists]
             }
         })
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit(name, description) {
 
-        console.log('submit')
+        const id = Date.now();
+        this.setState((prevState) => {
+            return {
+                lists: [...prevState.lists, {id, name, description}]
+            }
+        })
     }
     
     render() {
@@ -81,7 +71,7 @@ class Home extends React.Component {
                 <h1>Home</h1>
                 
                 { this.state.adding
-                    ? <AddListForm handleSubmit={this.handleSubmit} onCancel={this.hideAdd} />
+                    ? <AddListForm onSubmit={this.handleSubmit} onCancel={this.hideAdd} />
                     : <button onClick={ this.showAdd }>Add List</button>
                 }
 

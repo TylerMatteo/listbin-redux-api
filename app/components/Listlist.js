@@ -8,7 +8,7 @@ class Listlist extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.lists.map((list) => <li key="list.id">{list.name}</li>)}
+                {this.props.lists.map((list) => <li key={list.id}>{list.name}</li>)}
             </ul>
         )
     }
