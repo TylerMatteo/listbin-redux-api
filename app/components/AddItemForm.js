@@ -1,12 +1,13 @@
 const React = require('react');
 
-class AddListForm extends React.Component {
+class AddItemForm extends React.Component {
+    
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
-            name: '',
-            description: ''
+            content: '',
+            creator: '',
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -14,7 +15,9 @@ class AddListForm extends React.Component {
     }
 
     handleChange(event) {
-        const { value, name } = event.target;
+        const target = event.target;
+        const { value, name } = target;
+
         this.setState({
             [name]: value
         })   
@@ -23,8 +26,8 @@ class AddListForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.onSubmit(
-            this.state.name,
-            this.state.description
+            this.state.creator,
+            this.state.content
         )
     }
 
@@ -33,26 +36,25 @@ class AddListForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <input 
                     type="text" 
-                    name="name" 
-                    value={this.state.name}
+                    name="creator" 
+                    value={this.state.creator}
                     onChange={this.handleChange}
-                    placeholder="List Name" />
+                    placeholder="Your Name" />
                 <textarea 
-                    name="description" 
+                    name="content" 
                     cols="30" rows="10"
-                    value={this.state.description}
+                    value={this.state.content}
                     onChange={this.handleChange}
-                    placeholder="List Description">
+                    placeholder="Content">
                 </textarea>
                 <button 
                     className="button"
                     type='submit'>
                     Submit
                 </button>
-                <button onClick={ this.props.onCancel }>Cancel</button>
             </form>
         )
     }
 }
 
-module.exports = AddListForm;
+module.exports = AddItemForm;

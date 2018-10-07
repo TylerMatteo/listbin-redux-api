@@ -6,6 +6,7 @@ const Switch = ReactRouter.Switch;
 const Home = require('./Home');
 const Listlist = require('./Listlist');
 const List = require('./List');
+const uuid = require('uuid/v1');
 
 class App extends React.Component {
 
@@ -17,34 +18,53 @@ class App extends React.Component {
         }
 
         this.addList = this.addList.bind(this);
+        this.addItem = this.addItem.bind(this);
     }
 
     addList(name, description) {
-        const id = Date.now();
+        const id = uuid();
+        const createdAt = Date.now();
         this.setState((prevState) => {
             return {
-                lists: [...prevState.lists, {id, name, description}]
+                lists: [...prevState.lists, {id, name, description, createdAt, items: []}]
             }
         });
     }
 
-    // addToList(listId, item) {
-    //     this.setState((prevState) => {
-    //         return {
+    addItem(listId, creator, content) {
+        this.setState((prevState) => {
+            const i = prevState.lists.findIndex(list => list.id === listId);
+            // console.log({...prevState.lists[i]})
 
-    //         }
-    //     })
-    // }
+            return {
+                lists: [
+                    ...prevState.lists.slice(0, i),
+                    {
+                        ...prevState.lists[i],
+                        items: [
+                            ...prevState.lists[i].items,
+                            {
+                                id: uuid(),
+                                createdAt: Date.now(),
+                                creator,
+                                content
+                            }
+                        ]
+                    },
+                    ...prevState.lists.slice(i+1)
+                ]
+            }
+
+            // return prevState;
+        })
+    }
 
     render() {
         return (
             <BrowserRouter>
                 <div className="container">
                     <Route exact path="/" render={() => <Home lists={this.state.lists} addList={this.addList} />}/>
-                    <Route exact path="/:listId" render={({ match }) => <List list={ this.state.lists.find((list) => {
-                        console.log(list.id, match.params.listId);
-                        return list.id === parseInt(match.params.listId);
-                    })}/>}/>
+                    <Route exact path="/:listId" render={({ match }) => <List list={ this.state.lists.find(list => list.id === match.params.listId)} addItem={this.addItem} />}/>
                     {/* <Route exact path="/lists" component={Home}>
                         <Route exact path="/lists/:id" component={Home} />
                     </Route>

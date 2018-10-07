@@ -12,7 +12,15 @@ const config = {
       },
       module: {
         rules: [
-          { test: /\.(js)$/, use: 'babel-loader' },
+          { 
+              test: /\.(js)$/, use: {
+                  loader: 'babel-loader',
+                  options: {
+                      presets: ['react', 'es2015'],
+                      plugins: ['transform-object-rest-spread']
+                  }
+                } 
+          },
           { test: /\.scss$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]}
         ]
       },
