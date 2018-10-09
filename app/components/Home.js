@@ -25,8 +25,8 @@ class Home extends React.Component {
     
     render() {
         return (
-            <div>
-                <h1>Home</h1>
+            <div className="home">
+                <h2>Lists</h2>
                 
                 { this.state.adding
                     ? <AddListForm onSubmit={this.props.addList} onCancel={this.hideAdd} />

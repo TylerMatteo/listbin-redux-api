@@ -7,7 +7,7 @@ class AddItemForm extends React.Component {
 
         this.state = {
             content: '',
-            creator: '',
+            createdBy: '',
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -26,9 +26,13 @@ class AddItemForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.onSubmit(
-            this.state.creator,
+            this.state.createdBy,
             this.state.content
         )
+        this.setState({
+            createdBy: '',
+            content: ''
+        })
     }
 
     render() {
@@ -36,8 +40,8 @@ class AddItemForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <input 
                     type="text" 
-                    name="creator" 
-                    value={this.state.creator}
+                    name="createdBy" 
+                    value={this.state.createdBy}
                     onChange={this.handleChange}
                     placeholder="Your Name" />
                 <textarea 

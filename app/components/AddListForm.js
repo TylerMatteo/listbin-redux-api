@@ -5,6 +5,7 @@ class AddListForm extends React.Component {
         super(props)
 
         this.state = {
+            createdBy: '',
             name: '',
             description: ''
         }
@@ -23,14 +24,26 @@ class AddListForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.onSubmit(
+            this.state.createdBy,
             this.state.name,
             this.state.description
         )
+        this.setState({
+            createdBy: '',
+            name: '',
+            description: ''
+        })
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="add-list" onSubmit={this.handleSubmit}>
+                <input 
+                    type="text" 
+                    name="createdBy" 
+                    value={this.state.createdBy}
+                    onChange={this.handleChange}
+                    placeholder="Your Name" />
                 <input 
                     type="text" 
                     name="name" 
@@ -44,12 +57,14 @@ class AddListForm extends React.Component {
                     onChange={this.handleChange}
                     placeholder="List Description">
                 </textarea>
-                <button 
-                    className="button"
-                    type='submit'>
-                    Submit
-                </button>
-                <button onClick={ this.props.onCancel }>Cancel</button>
+                <div className="actions">
+                    <button 
+                        className="button"
+                        type='submit'>
+                        Submit
+                    </button>
+                    <button onClick={ this.props.onCancel }>Cancel</button>
+                </div>
             </form>
         )
     }

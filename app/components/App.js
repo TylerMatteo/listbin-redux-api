@@ -21,20 +21,19 @@ class App extends React.Component {
         this.addItem = this.addItem.bind(this);
     }
 
-    addList(name, description) {
+    addList(createdBy, name, description) {
         const id = uuid();
         const createdAt = Date.now();
         this.setState((prevState) => {
             return {
-                lists: [...prevState.lists, {id, name, description, createdAt, items: []}]
+                lists: [...prevState.lists, {id, name, description, createdBy, createdAt, items: []}]
             }
         });
     }
 
-    addItem(listId, creator, content) {
+    addItem(listId, createdBy, content) {
         this.setState((prevState) => {
             const i = prevState.lists.findIndex(list => list.id === listId);
-            // console.log({...prevState.lists[i]})
 
             return {
                 lists: [
@@ -46,7 +45,7 @@ class App extends React.Component {
                             {
                                 id: uuid(),
                                 createdAt: Date.now(),
-                                creator,
+                                createdBy,
                                 content
                             }
                         ]
@@ -61,16 +60,23 @@ class App extends React.Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <div className="container">
-                    <Route exact path="/" render={() => <Home lists={this.state.lists} addList={this.addList} />}/>
-                    <Route exact path="/:listId" render={({ match }) => <List list={ this.state.lists.find(list => list.id === match.params.listId)} addItem={this.addItem} />}/>
-                    {/* <Route exact path="/lists" component={Home}>
-                        <Route exact path="/lists/:id" component={Home} />
-                    </Route>
-                    <Route exact path="/list/:id" component={List} /> */}
-                </div>
-            </BrowserRouter>
+            <div>
+                <header>
+                    <h1>
+                        ListBin
+                    </h1>
+                </header>
+                <BrowserRouter>
+                    <div className="container">
+                        <Route exact path="/" render={() => <Home lists={this.state.lists} addList={this.addList} />}/>
+                        <Route exact path="/:listId" render={({ match }) => <List list={ this.state.lists.find(list => list.id === match.params.listId)} addItem={this.addItem} />}/>
+                        {/* <Route exact path="/lists" component={Home}>
+                            <Route exact path="/lists/:id" component={Home} />
+                        </Route>
+                        <Route exact path="/list/:id" component={List} /> */}
+                    </div>
+                </BrowserRouter>
+            </div>
         )
     }
 }

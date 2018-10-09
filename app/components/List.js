@@ -9,10 +9,10 @@ class List extends React.Component {
         this.addToList = this.addToList.bind(this);
     }
 
-    addToList(creator, content) {
+    addToList(createdBy, content) {
         this.props.addItem(
             this.props.list.id,
-            creator, 
+            createdBy, 
             content
         )
     }
@@ -21,7 +21,6 @@ class List extends React.Component {
         return (
             <div>
                 <AddItemForm onSubmit={this.addToList} />
-                <span>{this.props.list.id}</span>
                 <ItemList items={this.props.list.items} />
             </div>
         );
