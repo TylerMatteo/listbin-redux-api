@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lora:400,700');
 
+$grey: #e5e5e5;
+
 body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
   }
@@ -8,7 +10,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lora';
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
 
+a {
+  text-decoration: none;
+  color: #000;
+}
 
 header {
   width: 800px;
@@ -16,25 +26,34 @@ header {
 
   h1 {
     font: {
-      family: 'Lora';
       weight: 700;
       size: 3em;
     }
   }
 }
 
+button {
+  border: 1px solid $grey;
+  padding: 3px 10px;
+  background-color: #fff;
+}
+
 .container {
   width: 800px;
   margin: 10px auto;
-  border-right: 1px solid #e5e5e5;
-  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid $grey;
+  border-left: 1px solid $grey;
   padding: 10px 20px;
 
   .home {
     h2 {
       font-size: 2em;
       padding: 5px 0;
-      border-bottom: 1px solid #e5e5e5;
+      border-bottom: 1px solid $grey;
+    }
+
+    .add-list-button {
+      width: 100%;
     }
 
     .add-list {
@@ -42,10 +61,46 @@ header {
         display: block;
         width: 100%;
         margin: 10px 0;
-        // border-radius: 6px;
-        border-color: 1px solid #e5e5e5;
+        border: 1px solid $grey;
         padding: 15px;
       }
+
+      .actions button {
+        width: 50%;
+        
+      }
+    }
+
+    .list-list {
+      
+      li {
+        border-bottom: 1px solid $grey;
+        
+        a {
+          padding: 10px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          &:hover {
+            background-color: #ededed;
+          }
+
+          .list-left {
+            h3 {
+              font: {
+                weight: 700;
+                size: 1.5em;
+              }
+            }
+          }
+
+          
+        }
+
+        
+      }
+
     }
   }
 }

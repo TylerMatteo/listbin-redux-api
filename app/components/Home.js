@@ -7,12 +7,12 @@ class Home extends React.Component {
         super();
 
         this.state = {
-            adding: false,
-            lists: []
+            adding: false
         }
 
         this.showAdd = this.showAdd.bind(this);
         this.hideAdd = this.hideAdd.bind(this);
+        this.addList = this.addList.bind(this);
     }
 
     showAdd() {
@@ -22,6 +22,11 @@ class Home extends React.Component {
     hideAdd() {
         this.setState({ adding: false })
     }
+
+    addList(createdBy, name, description) {
+        this.setState({ adding: false });
+        this.props.addList(createdBy, name, description);
+    }
     
     render() {
         return (
@@ -29,8 +34,8 @@ class Home extends React.Component {
                 <h2>Lists</h2>
                 
                 { this.state.adding
-                    ? <AddListForm onSubmit={this.props.addList} onCancel={this.hideAdd} />
-                    : <button onClick={ this.showAdd }>Add List</button>
+                    ? <AddListForm onSubmit={this.addList} onCancel={this.hideAdd} />
+                    : <button className="add-list-button" onClick={ this.showAdd }>Add List</button>
                 }
                 
                 <Listlist lists={this.props.lists} />
