@@ -9,7 +9,7 @@ class AddItemForm extends React.Component {
             adding: false,
             content: '',
             createdBy: '',
-            tite: ''
+            title: ''
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -36,7 +36,8 @@ class AddItemForm extends React.Component {
         this.setState({
             createdBy: '',
             title: '',
-            content: ''
+            content: '',
+            adding: false
         })
     }
 

@@ -1,5 +1,4 @@
 const React = require('react');
-// var NavLink = require('react-router-dom').NavLink;
 
 function Itemlist(props) {
     return (

@@ -36,7 +36,7 @@ class List extends React.Component {
         return (
             <div>
                 { this.state.adding
-                    ? <AddItemForm onSubmit={this.addToList} onCancel={this.hidAdd} />
+                    ? <AddItemForm onSubmit={this.addToList} onCancel={this.hideAdd} />
                     : <button className="add-list-button" onClick={ this.showAdd }>Add List</button>
                 }
                 
