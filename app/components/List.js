@@ -6,21 +6,40 @@ class List extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = { 
+            adding: false
+        }
+
+        this.showAdd = this.showAdd.bind(this);
+        this.hideAdd = this.hideAdd.bind(this);
         this.addToList = this.addToList.bind(this);
     }
 
-    addToList(createdBy, content) {
+    addToList(createdBy, title, content) {
         this.props.addItem(
             this.props.list.id,
-            createdBy, 
+            createdBy,
+            title, 
             content
         )
+    }
+
+    showAdd() {
+        this.setState({ adding: true })
+    }
+
+    hideAdd() {
+        this.setState({ adding: false })
     }
     
     render() {
         return (
             <div>
-                <AddItemForm onSubmit={this.addToList} />
+                { this.state.adding
+                    ? <AddItemForm onSubmit={this.addToList} onCancel={this.hidAdd} />
+                    : <button className="add-list-button" onClick={ this.showAdd }>Add List</button>
+                }
+                
                 <ItemList items={this.props.list.items} />
             </div>
         );

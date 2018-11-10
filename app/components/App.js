@@ -31,7 +31,7 @@ class App extends React.Component {
         });
     }
 
-    addItem(listId, createdBy, content) {
+    addItem(listId, createdBy, title, content) {
         this.setState((prevState) => {
             const i = prevState.lists.findIndex(list => list.id === listId);
 
@@ -46,6 +46,7 @@ class App extends React.Component {
                                 id: uuid(),
                                 createdAt: Date.now(),
                                 createdBy,
+                                title,
                                 content
                             }
                         ]

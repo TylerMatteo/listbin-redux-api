@@ -6,8 +6,10 @@ class AddItemForm extends React.Component {
         super(props);
 
         this.state = {
+            adding: false,
             content: '',
             createdBy: '',
+            tite: ''
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -17,6 +19,7 @@ class AddItemForm extends React.Component {
     handleChange(event) {
         const target = event.target;
         const { value, name } = target;
+        console.log({value, name})
 
         this.setState({
             [name]: value
@@ -27,10 +30,12 @@ class AddItemForm extends React.Component {
         event.preventDefault();
         this.props.onSubmit(
             this.state.createdBy,
+            this.state.title,
             this.state.content
         )
         this.setState({
             createdBy: '',
+            title: '',
             content: ''
         })
     }
@@ -44,6 +49,12 @@ class AddItemForm extends React.Component {
                     value={this.state.createdBy}
                     onChange={this.handleChange}
                     placeholder="Your Name" />
+                <input 
+                    type="text" 
+                    name="title" 
+                    value={this.state.title}
+                    onChange={this.handleChange}
+                    placeholder="Title" />
                 <textarea 
                     name="content" 
                     cols="30" rows="10"
@@ -51,11 +62,14 @@ class AddItemForm extends React.Component {
                     onChange={this.handleChange}
                     placeholder="Content">
                 </textarea>
-                <button 
-                    className="button"
-                    type='submit'>
-                    Submit
-                </button>
+                <div className="actions">
+                    <button 
+                        className="button"
+                        type='submit'>
+                        Submit
+                    </button>
+                    <button onClick={ this.props.onCancel }>Cancel</button>
+                </div>
             </form>
         )
     }
