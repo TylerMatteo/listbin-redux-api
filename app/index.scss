@@ -53,6 +53,30 @@ button {
     padding: 15px;
   }
 
+  li {
+    border-bottom: 1px solid $grey;
+    
+    a {
+      padding: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      &:hover {
+        background-color: #ededed;
+      }
+
+      .list-left {
+        h3 {
+          font: {
+            weight: 700;
+            size: 1.5em;
+          }
+        }
+      }
+    }
+  }
+
   .actions button {
     width: 50%;
   }
@@ -67,38 +91,25 @@ button {
     .add-list-button {
       width: 100%;
     }
+  }
 
-    .list-list {
-      
-      li {
-        border-bottom: 1px solid $grey;
-        
-        a {
-          padding: 10px;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
+  .list {
 
-          &:hover {
-            background-color: #ededed;
-          }
-
-          .list-left {
-            h3 {
-              font: {
-                weight: 700;
-                size: 1.5em;
-              }
-            }
-          }
-
-          
-        }
-
-        
-      }
-
+    .add-item-button {
+      width: 100%;
     }
+
+    li {
+      header {
+        p {
+          font: {
+            color: $grey;
+            style: italic;
+          }
+        }
+      }
+    }
+
   }
 }
 

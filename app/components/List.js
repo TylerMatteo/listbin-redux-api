@@ -34,10 +34,10 @@ class List extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className="list">
                 { this.state.adding
                     ? <AddItemForm onSubmit={this.addToList} onCancel={this.hideAdd} />
-                    : <button className="add-list-button" onClick={ this.showAdd }>Add List</button>
+                    : <button className="add-item-button" onClick={ this.showAdd }>Add Item</button>
                 }
                 
                 <ItemList items={this.props.list.items} />

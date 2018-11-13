@@ -1,21 +1,16 @@
 const React = require('react');
-var NavLink = require('react-router-dom').NavLink;
+const NavLink = require('react-router-dom').NavLink;
 
-class Listlist extends React.Component {
-    constructor(props) {
-        super(props);
-        
-    }
-    
-    render() {
+function Listlist(props) {
+
         return (
             <ul className="list-list">
                 {
-                    this.props.lists.map((list) => 
+                    props.lists.map((list) => 
                         <li 
                             key={list.id}
                             >
-                            <NavLink activeClassName="active" to={`/${list.id}`}>
+                            <NavLink to={`/${list.id}`}>
                                 <div className="list-left">
                                     <h3>{list.name}</h3>
                                 </div>
@@ -28,7 +23,7 @@ class Listlist extends React.Component {
                 }
             </ul>
         )
-    }
+
 }
 
 module.exports = Listlist;
