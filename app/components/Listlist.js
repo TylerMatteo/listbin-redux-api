@@ -1,5 +1,6 @@
 const React = require('react');
 const NavLink = require('react-router-dom').NavLink;
+const pluralize = require('pluralize');
 
 function Listlist(props) {
 
@@ -15,7 +16,7 @@ function Listlist(props) {
                                     <h3>{list.name}</h3>
                                 </div>
                                 <div className="list-right">
-                                    {list.items.length}
+                                    <span>{list.items.length} {pluralize(list.unit, list.items.length)}</span>
                                 </div>
                             </NavLink>
                         </li>

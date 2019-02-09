@@ -21,12 +21,12 @@ class App extends React.Component {
         this.addItem = this.addItem.bind(this);
     }
 
-    addList(createdBy, name, description) {
+    addList(createdBy, name, unit, description) {
         const id = uuid();
         const createdAt = Date.now();
         this.setState((prevState) => {
             return {
-                lists: [...prevState.lists, {id, name, description, createdBy, createdAt, items: []}]
+                lists: [...prevState.lists, {id, name, unit, description, createdBy, createdAt, items: []}]
             }
         });
     }

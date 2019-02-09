@@ -23,9 +23,9 @@ class Home extends React.Component {
         this.setState({ adding: false })
     }
 
-    addList(createdBy, name, description) {
+    addList(createdBy, name, unit, description) {
         this.setState({ adding: false });
-        this.props.addList(createdBy, name, description);
+        this.props.addList(createdBy, name, unit, description);
     }
     
     render() {

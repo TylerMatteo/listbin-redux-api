@@ -16,6 +16,7 @@ class List extends React.Component {
     }
 
     addToList(createdBy, title, content) {
+        this.setState({ adding: false });
         this.props.addItem(
             this.props.list.id,
             createdBy,

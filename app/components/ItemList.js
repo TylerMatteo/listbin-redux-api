@@ -21,7 +21,7 @@ function Itemlist(props) {
                                 <h3>{item.title}</h3>
                                 <p>Added by {item.createdBy} on {Moment(item.createdAt).format("dddd, MMMM Do YYYY [at] h:mm a")}</p>
                             </header>
-                            <p>{excerpt(item.content, 5)}</p>
+                            <p>{excerpt(item.content, 20)}</p>
                         
                     </li>
                 )

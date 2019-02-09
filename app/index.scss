@@ -55,9 +55,11 @@ button {
 
   li {
     border-bottom: 1px solid $grey;
+    display: flex;
+    align-items: center;
     
     a {
-      padding: 10px;
+      padding: 20px 10px;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -67,10 +69,25 @@ button {
       }
 
       .list-left {
+        display: flex;
         h3 {
+          align-self: flex-end;
+          margin: 0;
           font: {
             weight: 700;
             size: 1.5em;
+          }
+        }
+      }
+
+      .list-right {
+        display: flex;
+        span {
+          align-self: flex-end;
+          font: {
+            family: 'Lora', Arial;
+            weight: 400;
+            size: 1.2em;
           }
         }
       }
@@ -101,10 +118,15 @@ button {
 
     li {
       header {
+        h3{
+          margin-bottom: 0;
+        }
+
         p {
+          color: #b5b5b5;
           font: {
-            color: $grey;
             style: italic;
+            size: 0.7em;
           }
         }
       }

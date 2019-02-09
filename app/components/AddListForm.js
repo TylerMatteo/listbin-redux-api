@@ -7,6 +7,7 @@ class AddListForm extends React.Component {
         this.state = {
             createdBy: '',
             name: '',
+            unit: '',
             description: ''
         }
 
@@ -26,11 +27,13 @@ class AddListForm extends React.Component {
         this.props.onSubmit(
             this.state.createdBy,
             this.state.name,
+            this.state.unit,
             this.state.description
         )
         this.setState({
             createdBy: '',
             name: '',
+            unit: '',
             description: ''
         })
     }
@@ -50,6 +53,12 @@ class AddListForm extends React.Component {
                     value={this.state.name}
                     onChange={this.handleChange}
                     placeholder="List Name" />
+                <input 
+                    type="text" 
+                    name="unit" 
+                    value={this.state.unit}
+                    onChange={this.handleChange}
+                    placeholder='Unit Name. Was is this a list of? (As the singular. Think "meme", not "memes".)' />
                 <textarea 
                     name="description" 
                     cols="30" rows="10"
