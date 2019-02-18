@@ -12,16 +12,17 @@ const config = {
       },
       module: {
         rules: [
-          { 
-              test: /\.(js)$/, use: {
-                  loader: 'babel-loader',
-                  options: {
-                      presets: ['react', 'es2015'],
-                      plugins: ['transform-object-rest-spread']
-                  }
-                } 
-          },
-          { test: /\.scss$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]}
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env','@babel/preset-react']
+                    }
+                }
+            },
+            { test: /\.scss$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]}
         ]
       },
       devServer: {
