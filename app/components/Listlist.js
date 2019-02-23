@@ -8,7 +8,7 @@ function Listlist(props) {
             <ul className="list-list">
                 {
                     props.lists.map((list) => 
-                        <li 
+                        <li className="list-list-item"
                             key={list.id}
                             >
                             <NavLink to={`/${list.id}`}>

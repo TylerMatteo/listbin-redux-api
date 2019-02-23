@@ -55,14 +55,19 @@ button {
 
   li {
     border-bottom: 1px solid $grey;
-    display: flex;
     align-items: center;
+    display: flex;
+
+    &.list-list-item {
+      a {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
     
     a {
       padding: 20px 10px;
       width: 100%;
-      display: flex;
-      justify-content: space-between;
 
       &:hover {
         background-color: #ededed;
@@ -90,6 +95,10 @@ button {
             size: 1.2em;
           }
         }
+      }
+
+      p.item-content {
+
       }
     }
   }

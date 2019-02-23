@@ -19,7 +19,6 @@ class AddItemForm extends React.Component {
     handleChange(event) {
         const target = event.target;
         const { value, name } = target;
-        console.log({value, name})
 
         this.setState({
             [name]: value
