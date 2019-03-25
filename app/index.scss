@@ -64,6 +64,12 @@ button {
         justify-content: space-between;
       }
     }
+
+    &.list-item{ 
+      p {
+        margin-bottom: 0;
+      }
+    }
     
     a {
       padding: 20px 10px;

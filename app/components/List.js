@@ -36,6 +36,8 @@ class List extends React.Component {
     render() {
         return (
             <div className="list">
+                <h1>{this.props.list.name}</h1>
+
                 { this.state.adding
                     ? <AddItemForm onSubmit={this.addToList} onCancel={this.hideAdd} />
                     : <button className="add-item-button" onClick={ this.showAdd }>Add Item</button>
