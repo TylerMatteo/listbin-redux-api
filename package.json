@@ -1,7 +1,7 @@
 {
   "name": "listbin",
   "version": "1.0.0",
-  "description": "A dead simple app for making lists of things",
+  "description": "A dead simple app for making lists of things, now with Redux and ImmutableJS",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
@@ -23,14 +23,18 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "firebase-tools": "^3.19.3",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "firebase-tools": "^3.19.3",
+    "immutable": "^4.0.0-rc.12",
     "node-sass": "^4.11.0",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-immutable": "^4.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3",
+    "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.4"
   }
 }
