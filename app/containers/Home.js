@@ -1,8 +1,20 @@
-const React = require('react');
-const Listlist = require('./Listlist');
-const AddListForm = require('./AddListForm');
+import React from 'react';
+import { connect } from "react-redux";
+import Listlist from '../components/Listlist';
+import AddListForm from '../components/AddListForm';
+import { addList } from "../actions/List";
 
-class Home extends React.Component {
+const mapStateToProps = state => {
+    return { lists: state.getIn(["lists", "byId"]) };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addList: list => dispatch(addList(list))
+    };
+}
+
+class ConnectedHome extends React.Component {
     constructor() {
         super();
 
@@ -12,7 +24,6 @@ class Home extends React.Component {
 
         this.showAdd = this.showAdd.bind(this);
         this.hideAdd = this.hideAdd.bind(this);
-        this.addList = this.addList.bind(this);
     }
 
     showAdd() {
@@ -23,10 +34,10 @@ class Home extends React.Component {
         this.setState({ adding: false })
     }
 
-    addList(createdBy, name, unit, description) {
-        this.setState({ adding: false });
-        this.props.addList(createdBy, name, unit, description);
-    }
+    // addList(createdBy, name, unit, description) {
+    //     this.setState({ adding: false });
+    //     this.props.addList(createdBy, name, unit, description);
+    // }
     
     render() {
         return (
@@ -34,7 +45,7 @@ class Home extends React.Component {
                 <h2>Lists</h2>
                 
                 { this.state.adding
-                    ? <AddListForm onSubmit={this.addList} onCancel={this.hideAdd} />
+                    ? <AddListForm onSubmit={this.props.addList} onCancel={this.hideAdd} />
                     : <button className="add-list-button" onClick={ this.showAdd }>Add List</button>
                 }
                 
@@ -44,4 +55,6 @@ class Home extends React.Component {
     }
 }
 
-module.exports = Home;
+const Home = connect(mapStateToProps, mapDispatchToProps)(ConnectedHome);
+
+export default Home;

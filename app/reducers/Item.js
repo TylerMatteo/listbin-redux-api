@@ -1,4 +1,5 @@
 import { ADD_ITEM } from "../constants/action-types";
+import { fromJS } from "immutable";
 
 const initialState = fromJS({
     items: {
@@ -60,4 +61,4 @@ function itemReducer(state = initialState, action) {
     }
 };
 
-export default listReducer;
+export default itemReducer;

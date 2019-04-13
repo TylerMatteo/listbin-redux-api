@@ -54,6 +54,6 @@ const ConnectedList = ({ items }) => (
     <p>Here's a list</p>
 )
 
-const List = connect(mapStateToProps)(ConnectedList);
+const List = connect()(ConnectedList);
 
-module.exports = List;
+export default List;

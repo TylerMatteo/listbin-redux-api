@@ -4,6 +4,8 @@ class AddListForm extends React.Component {
     constructor(props) {
         super(props)
 
+        // Since only this component is concerned about this controlled component state, we can keep it
+        // here instead of the redux store
         this.state = {
             createdBy: '',
             name: '',
@@ -24,12 +26,12 @@ class AddListForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.onSubmit(
-            this.state.createdBy,
-            this.state.name,
-            this.state.unit,
-            this.state.description
-        )
+        this.props.onSubmit({
+            createdBy: this.state.createdBy,
+            name: this.state.name,
+            unit: this.state.unit,
+            description: this.state.description
+        })
         this.setState({
             createdBy: '',
             name: '',
