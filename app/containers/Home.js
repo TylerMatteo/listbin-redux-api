@@ -5,6 +5,7 @@ import AddListForm from '../components/AddListForm';
 import { addList } from "../actions/List";
 
 const mapStateToProps = state => {
+    console.log(state.getIn(["lists", "byId"]).toJS())
     return { lists: state.getIn(["lists", "byId"]) };
 };
 
@@ -43,7 +44,6 @@ class ConnectedHome extends React.Component {
         return (
             <div className="home">
                 <h2>Lists</h2>
-                
                 { this.state.adding
                     ? <AddListForm onSubmit={this.props.addList} onCancel={this.hideAdd} />
                     : <button className="add-list-button" onClick={ this.showAdd }>Add List</button>

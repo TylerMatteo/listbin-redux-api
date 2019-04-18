@@ -5,8 +5,8 @@ import listReducer from './List';
 import itemReducer from './Item';
    
 const rootReducer = combineReducers({
-    listReducer,
-    itemReducer
+    lists: listReducer,
+    items: itemReducer
 });
 
 export default rootReducer;

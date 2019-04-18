@@ -7,16 +7,16 @@ function Listlist(props) {
         return (
             <ul className="list-list">
                 {
-                    props.lists.map((list) => 
+                    props.lists.valueSeq().map((list) => 
                         <li className="list-list-item"
-                            key={list.id}
+                            key={list.get("id")}
                             >
                             <NavLink to={`/${list.id}`}>
                                 <div className="list-left">
-                                    <h3>{list.name}</h3>
+                                    <h3>{list.get("name")}</h3>
                                 </div>
                                 <div className="list-right">
-                                    <span>{list.items.length} {pluralize(list.unit, list.items.length)}</span>
+                                    <span>{list.get("items").length} {pluralize(list.get("unit"), list.get("items").length)}</span>
                                 </div>
                             </NavLink>
                         </li>
