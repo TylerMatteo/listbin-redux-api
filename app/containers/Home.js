@@ -5,7 +5,6 @@ import AddListForm from '../components/AddListForm';
 import { addList } from "../actions/List";
 
 const mapStateToProps = state => {
-    console.log(state.getIn(["lists", "byId"]).toJS())
     return { lists: state.getIn(["lists", "byId"]) };
 };
 

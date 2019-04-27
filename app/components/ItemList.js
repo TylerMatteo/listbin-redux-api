@@ -15,13 +15,13 @@ function Itemlist(props) {
         <ul>
             {
                 props.items.map((item) =>
-                    <li key={item.id} className="list-item">
-                        <NavLink to={`/${item.id}`}>
+                    <li key={item.get("id")} className="list-item">
+                        <NavLink to={`/${item.get("id")}`}>
                             <header>
-                                <h3>{item.title}</h3>
-                                <p>Added by {item.createdBy} on {Moment(item.createdAt).format("dddd, MMMM Do YYYY [at] h:mm a")}</p>
+                                <h3>{item.get("title")}</h3>
+                                <p>Added by {item.get("createdBy")} on {Moment(item.get("createdAt")).format("dddd, MMMM Do YYYY [at] h:mm a")}</p>
                             </header>
-                            <p>{excerpt(item.content, 20)}</p>
+                            <p>{excerpt(item.get("content"), 20)}</p>
                         </NavLink>
                     </li>
                 )

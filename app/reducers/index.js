@@ -14,9 +14,21 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-// Since this selector needs to know about lists and items, define it here next to the root reducer
-export const getCommentsByArticleId = (state, listId) => {
+// Since these selectors needs to know about lists and items, define it here next to the root reducer
+export const getCommentsByListId = (state, listId) => {
     const itemIds = state.getIn(["lists", "byId", listId, "items"]);
     return itemIds.map( itemId => state.getIn(["items", "byId", itemId]));
+}
+
+export const getListWithItemsById = (state, listId) => {
+    // const itemIds = state.getIn(["lists", "byId", listId, "items"]);
+    // Select list
+    const list = state.getIn(["lists", "byId", listId])
+
+    // Select comments belonging to that list
+    const items = list.get("items").map( itemId => state.getIn(["items", "byId", itemId]));
+
+    // Return new list with comments prop set to map of comments
+    return list.set("items", items);
 }
   
