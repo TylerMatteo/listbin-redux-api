@@ -11,7 +11,7 @@ function Listlist(props) {
                         <li className="list-list-item"
                             key={list.get("id")}
                             >
-                            <NavLink to={`/${list.id}`}>
+                            <NavLink to={`/${list.get("id")}`}>
                                 <div className="list-left">
                                     <h3>{list.get("name")}</h3>
                                 </div>

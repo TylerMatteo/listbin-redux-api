@@ -1,6 +1,7 @@
 import React from 'react';
 import AddItemForm from '../components/AddItemForm';
 import ItemList from '../components/ItemList';
+import { getCommentsByArticleId } from '../reducers/index';
 import { connect } from 'react-redux';
 
 // class List extends React.Component {
@@ -50,10 +51,20 @@ import { connect } from 'react-redux';
 //     }
 // }
 
+const mapStateToProps = (state, ownProps) => {
+    // console.log(state.toJS());
+    // let ids = state.getIn(["lists", "byId", ownProps.match.params.listId, "items"]);
+    // console.log(ids);
+    // const items = { ...ids } = state.getIn(["items", "byId"])
+    // console.log(items);
+    getCommentsByArticleId(state, ownProps.match.params.listId);
+};
+
+
 const ConnectedList = ({ items }) => (
     <p>Here's a list</p>
 )
 
-const List = connect()(ConnectedList);
+const List = connect(mapStateToProps)(ConnectedList);
 
 export default List;
