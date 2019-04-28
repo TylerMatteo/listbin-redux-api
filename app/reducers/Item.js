@@ -1,5 +1,5 @@
 import { ADD_ITEM } from "../constants/action-types";
-import { fromJS } from "immutable";
+import { fromJS, Map } from "immutable";
 
 const initialState = fromJS({
     byId: {
@@ -51,9 +51,7 @@ const initialState = fromJS({
 function itemReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_ITEM:
-            return {
-                
-            }
+            return state.setIn(["byId", action.payload.item.id], Map(action.payload.item))
         default:
             return state;
     }

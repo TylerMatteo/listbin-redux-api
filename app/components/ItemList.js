@@ -1,6 +1,6 @@
-const React = require('react');
-const NavLink = require('react-router-dom').NavLink;
-const Moment = require('moment');
+import React from 'react';
+import { NavLink } from 'react-router-dom'
+import Moment from 'moment';
 
 function Itemlist(props) {
 
@@ -30,4 +30,4 @@ function Itemlist(props) {
     )
 }
 
-module.exports = Itemlist;
+export default Itemlist;

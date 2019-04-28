@@ -1,5 +1,5 @@
-import { ADD_LIST } from "../constants/action-types";
-import { fromJS } from "immutable";
+import { ADD_LIST, ADD_ITEM } from "../constants/action-types";
+import { fromJS, Map } from "immutable";
 
 const initialState = fromJS({
     byId: {
@@ -36,7 +36,9 @@ const initialState = fromJS({
 function listReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_LIST:
-            return state.lists.byId.push(action.payload);
+            return state.setIn(["byId", action.payload.id], Map(action.payload))
+        case ADD_ITEM:
+            return state.updateIn(["byId", action.payload.listId, "items"], arr => arr.push(action.payload.item.id));
         default:
             return state;
     }

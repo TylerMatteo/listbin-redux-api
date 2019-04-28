@@ -1,4 +1,5 @@
-const React = require('react');
+import React from 'react';
+import uuid from 'uuid';
 
 class AddItemForm extends React.Component {
     
@@ -27,11 +28,13 @@ class AddItemForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.onSubmit(
-            this.state.createdBy,
-            this.state.title,
-            this.state.content
-        )
+        this.props.onSubmit({
+            id: uuid(),
+            createdBy: this.state.createdBy,
+            createdAt: Date.now(),
+            title: this.state.title,
+            content: this.state.content
+        })
         this.setState({
             createdBy: '',
             title: '',
@@ -75,4 +78,4 @@ class AddItemForm extends React.Component {
     }
 }
 
-module.exports = AddItemForm;
+export default AddItemForm;

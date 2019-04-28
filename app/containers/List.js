@@ -1,18 +1,19 @@
 import React from 'react';
 import AddItemForm from '../components/AddItemForm';
 import ItemList from '../components/ItemList';
-import { getCommentsByArticleId, getListWithItemsById } from '../reducers/index';
+import { getListWithItemsById } from '../reducers/index';
 import { connect } from 'react-redux';
+import { addItem } from "../actions/Item";
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(getListWithItemsById(state, ownProps.match.params.listId));
     return {list: getListWithItemsById(state, ownProps.match.params.listId)}
 };
 
-
-// const ConnectedList = () => (
-//     <p>Here's a list</p>
-// )
+function mapDispatchToProps(dispatch) {
+    return {
+        addItem: (item, listId) => dispatch(addItem({item, listId}))
+    };
+}
 
 class ConnectedList extends React.Component {
     constructor(props) {
@@ -27,14 +28,9 @@ class ConnectedList extends React.Component {
         this.addToList = this.addToList.bind(this);
     } 
 
-    addToList(createdBy, title, content) {
+    addToList(item) {
         this.setState({ adding: false });
-        this.props.addItem(
-            this.props.list.id,
-            createdBy,
-            title, 
-            content
-        )
+        this.props.addItem(item, this.props.list.get("id"))
     }
 
     showAdd() {
@@ -62,6 +58,6 @@ class ConnectedList extends React.Component {
 }
 
 
-const List = connect(mapStateToProps)(ConnectedList);
+const List = connect(mapStateToProps, mapDispatchToProps)(ConnectedList);
 
 export default List;

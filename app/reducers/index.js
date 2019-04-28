@@ -21,9 +21,10 @@ export const getCommentsByListId = (state, listId) => {
 }
 
 export const getListWithItemsById = (state, listId) => {
-    // const itemIds = state.getIn(["lists", "byId", listId, "items"]);
+
     // Select list
     const list = state.getIn(["lists", "byId", listId])
+    console.log(state);
 
     // Select comments belonging to that list
     const items = list.get("items").map( itemId => state.getIn(["items", "byId", itemId]));
